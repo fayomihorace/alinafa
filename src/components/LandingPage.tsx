@@ -65,7 +65,21 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto relative">
           <div className="text-center animate-fadeIn">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight animate-slideInLeft" style={{ animationDelay: '0.2s' }}>
-              {t.hero.title}
+              {language == 'fr' ? (
+                <>
+                  Nous connectons les
+                  <br/>
+                  <span className='text-[#FBBF24]'>VibeCodeurs/Founders</span>
+                  <br/> avec des <span className='text-[#FBBF24]'>experts</span> de la tech
+                </>
+              ) : (
+                <>
+                  We connect.
+                  <br/>
+                  <span className='text-[#FBBF24]'>VibeCoders/Founders</span>
+                  <br/> with technical <span className='text-[#FBBF24]'>experts</span>.
+                </>
+              )}
             </h1>
             <p className="text-xl sm:text-2xl text-blue-100 mb-10 max-w-3xl mx-auto leading-relaxed animate-slideInRight" style={{ animationDelay: '0.4s' }}>
               {t.hero.subtitle}

@@ -3,7 +3,7 @@ import { Translation } from '../types';
 export const translations: Record<'fr' | 'en', Translation> = {
   fr: {
     hero: {
-      title: 'Nous connectons les VibeCodeurs avec des experts de la tech',
+      title: 'Nous connectons les VibeCodeurs/Founders avec des experts de la tech',
       subtitle: "Un accompagnement sur la vision, l'UI/UX, l'architecture de code, la sécurité, le déploiement, et le monitoring de votre produit.",
       cta: 'Réserver une session',
       stats: {
@@ -85,13 +85,13 @@ export const translations: Record<'fr' | 'en', Translation> = {
   },
   en: {
     hero: {
-      title: 'We connect VibeCoders with technical experts.',
+      title: 'We connect VibeCoders and founders with technical experts.',
       subtitle: "With ad-hoc consulting sessions on the vision, UI/UX design, code architecture, security, deployment, and monitoring of your product.",
       cta: 'Book a session',
       stats: {
-        sessions: '500+ sessions',
-        satisfaction: '98% satisfied',
-        experts: '50+ experts',
+        sessions: '1+ sessions',
+        satisfaction: '100% satisfied',
+        experts: '10+ experts',
       },
     },
     forWho: {
