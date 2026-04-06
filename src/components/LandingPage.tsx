@@ -69,14 +69,14 @@ export default function LandingPage() {
                 <>
                   Nous connectons les
                   <br/>
-                  <span className='text-[#FBBF24]'>VibeCodeurs & Founders</span>
+                  <span className='text-[#FBBF24]'>VibeCodeurs</span>
                   <br/> avec des <span className='text-[#FBBF24]'>experts</span> de la tech
                 </>
               ) : (
                 <>
                   We connect.
                   <br/>
-                  <span className='text-[#FBBF24]'>VibeCoders/Founders</span>
+                  <span className='text-[#FBBF24]'>VibeCoders</span>
                   <br/> with technical <span className='text-[#FBBF24]'>experts</span>.
                 </>
               )}
