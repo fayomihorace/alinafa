@@ -1,5 +1,62 @@
-For all designs I ask you to make, have them be beautiful, not cookie cutter. Make webpages that are fully featured and worthy for production.
+# Pointu bilingual FR (default) + EN
+- Tally.so embed Calendly handles scheduling, WhatsApp handles contact
 
-By default, this template supports JSX syntax with Tailwind CSS classes, React hooks, and Lucide React for icons. Do not install other packages for UI themes, icons, etc unless absolutely necessary or I request them.
+## Commands
 
-Use icons from lucide-react for logos.
+```bash
+npm run dev          # start dev server
+npm run build        # production build
+npm run preview      # preview production build locally
+npm run typecheck    # tsc --noEmit
+npm run lint         # eslint
+```
+
+Always run `npm run typecheck && npm run lint` after a series of changes before considering a task done.
+
+## Project structure
+
+```
+src/
+ components/       # shared UI components
+ sections/         # landing page sections (Hero, Problem, HowItWorks, ForWho, Experts, Pricing, Proof, CTA, Footer)
+ i18n/             # translation files: fr.json, en.json
+ hooks/            # custom React hooks
+ types/            # TypeScript types
+ data/             # hardcoded experts list, pricing config
+ App.tsx
+ main.tsx
+```
+
+## Architecture decisions
+
+- Single-page landing with anchor navigation no API calls
+- WhatsApp CTA links use `https://wa.me/<number>?text=<encoded>` format
+- Calendly embed uses their standard widget script no class components
+- ES modules (import/export) no inline styles, no CSS modules
+- No `console.log` left in committed code
+
+## i18n rules
+
+- Every user-facing string MUST use `useTranslation` hook add FR key first, then EN equivalent
+- If a translation key is missing, i18next falls back to FR
+
+## Component rules
+
+- Keep components under 150 lines they read from i18n and data files directly
+- Shared UI components (Button, Badge, Card) accept explicit props with TypeScript interfaces
+- Animations: CSS transitions only it filters out unqualified leads. Never soften or remove the disqualification column. The two-column layout ( pas pour vous) must always render clearly on mobile.
+
+## Pricing display
+
+Always show price in both XOF and USD. Conversion rate is defined in `src/data/pricing.ts`. Round USD to nearest dollar use WebP format
+- Expert photos: 200x200px max, lazy loaded
+- Calendly and Tally scripts: load only when user scrolls to relevant section (IntersectionObserver)
+- Lighthouse score target: 90+ on mobile
+
+## Git workflow
+
+- Branch per feature: `feat/hero-section`, `fix/mobile-nav`, `content/fr-translations`
+- Never commit directly to `main`
+- Commit messages: conventional commits out of scope for MVP
+- Do not install animation libraries (Framer Motion, GSAP) Tailwind only
+- Do not add a component library (MUI, Chakra, shadcn) always use i18n keys

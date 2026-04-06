@@ -11,7 +11,7 @@ export default function ContactModal({ isOpen, onClose, translations }: ContactM
   if (!isOpen) return null;
 
   const handleWhatsApp = () => {
-    window.open('https://wa.me/YOUR_PHONE_NUMBER', '_blank');
+    window.open('https://wa.me/+2250717335852', '_blank');
   };
 
   const handleEmail = () => {
@@ -51,13 +51,13 @@ export default function ContactModal({ isOpen, onClose, translations }: ContactM
             {translations.whatsapp}
           </button>
 
-          <button
+          {/* <button
             onClick={handleEmail}
             className="w-full flex items-center justify-center gap-3 bg-[#1D3A8A] hover:bg-[#2A4BA0] text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-110 hover:shadow-xl animate-slideInRight group"
           >
             <Mail size={24} className="group-hover:animate-bounce-slow" />
             {translations.email}
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

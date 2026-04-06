@@ -3,23 +3,43 @@ import { ChevronRight, CheckCircle, Zap, Users, Globe as Globe2, TrendingUp } fr
 import { Translation, Language } from '../types';
 import { translations } from '../data/translations';
 import ContactModal from './ContactModal';
+import logoImage from '../assets/images/alinafa-secondary-full-2.png';
+
+// Currency enum
+enum Currency {
+  FCFA = 'FCFA',
+  EUR = 'EUR',
+  USD = 'USD',
+}
+const currencyData = {
+  [Currency.FCFA]: {sign: "Cfa", pricePerHOur: "10.000"},
+  [Currency.EUR]: {sign: "€", pricePerHOur: "20"},
+  [Currency.USD]: {sign : "$", pricePerHOur: "20"}
+}
 
 export default function LandingPage() {
   const [language, setLanguage] = useState<Language>('fr');
+  const [currency, setCurrency] = useState<Currency>(Currency.FCFA);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const t = translations[language];
 
   const toggleLanguage = () => {
-    setLanguage(prev => prev === 'fr' ? 'en' : 'fr');
+    setLanguage(prev => (prev === 'fr' ? 'en' : 'fr'));
+  };
+
+  const toggleCurrency = () => {
+    setCurrency(prev => (prev === Currency.FCFA ? Currency.EUR : Currency.FCFA));
   };
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Header */}
       <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-40 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-10 h-10 bg-gradient-to-br from-[#1D3A8A] to-[#2A4BA0] rounded-lg flex items-center justify-center">
-              <Zap className="text-[#FBBF24]" size={24} />
+              <img src={logoImage} alt="Logo" style={{height: "35px"}} />
             </div>
             <span className="text-2xl font-bold text-[#1D3A8A]">Alinafa</span>
           </div>
@@ -34,6 +54,7 @@ export default function LandingPage() {
         </div>
       </header>
 
+      {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#1D3A8A] via-[#2A4BA0] to-[#1D3A8A] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#FBBF24] rounded-full blur-3xl animate-float" />
@@ -74,15 +95,14 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* For Who Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold text-[#1D3A8A] mb-4">
               {t.forWho.title}
             </h2>
-            <p className="text-xl text-gray-600">
-              {t.forWho.subtitle}
-            </p>
+            <p className="text-xl text-gray-600">{t.forWho.subtitle}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -97,12 +117,8 @@ export default function LandingPage() {
                     <Users className="text-[#FBBF24]" size={24} />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-[#1D3A8A] mb-3 group-hover:animate-shimmer">
-                      {profile.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {profile.description}
-                    </p>
+                    <h3 className="text-xl font-bold text-[#1D3A8A] mb-3 group-hover:animate-shimmer">{profile.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{profile.description}</p>
                   </div>
                 </div>
               </div>
@@ -111,12 +127,11 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* How It Works */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-[#1D3A8A] mb-4">
-              {t.howItWorks.title}
-            </h2>
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#1D3A8A] mb-4">{t.howItWorks.title}</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -130,12 +145,8 @@ export default function LandingPage() {
                   <div className="w-12 h-12 bg-[#FBBF24] rounded-xl flex items-center justify-center mb-4 group-hover:animate-scale-pulse">
                     <span className="text-2xl font-bold text-[#1D3A8A]">{idx + 1}</span>
                   </div>
-                  <h3 className="text-lg font-bold text-[#1D3A8A] mb-3 group-hover:animate-shimmer">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {step.description}
-                  </p>
+                  <h3 className="text-lg font-bold text-[#1D3A8A] mb-3 group-hover:animate-shimmer">{step.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{step.description}</p>
                 </div>
                 {idx < t.howItWorks.steps.length - 1 && (
                   <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 animate-bounce-slow">
@@ -148,15 +159,28 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Pricing Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl sm:text-5xl font-bold text-[#1D3A8A] mb-4">
-              {t.pricing.title}
-            </h2>
-            <p className="text-xl text-gray-600">
-              {t.pricing.subtitle}
-            </p>
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#1D3A8A] mb-4">{t.pricing.title}</h2>
+            <p className="text-xl text-gray-600">{t.pricing.subtitle}</p>
+          </div>
+
+          {/* Currency Switcher */}
+          <div className="flex justify-center gap-2 mb-6">
+            {Object.values(Currency).map((cur) => (
+              <button
+                key={cur}
+                onClick={() => setCurrency(cur)}
+                className={`
+                  px-4 py-2 rounded-lg font-medium transition-colors
+                  ${currency === cur ? 'bg-[#FBBF24] text-[#1D3A8A]' : 'bg-gray-200 text-gray-600 hover:bg-gray-300'}
+                `}
+              >
+                {cur}
+              </button>
+            ))}
           </div>
 
           <div className="bg-white rounded-3xl shadow-2xl p-10 border-2 border-[#FBBF24] relative overflow-hidden hover:shadow-3xl transition-shadow duration-500 animate-slideUp">
@@ -165,15 +189,12 @@ export default function LandingPage() {
 
             <div className="text-center mb-8 relative">
               <div className="inline-flex items-baseline gap-2 animate-scale-pulse">
+                <span className="text-xl text-gray-600">{t.pricing.priceStartFrom}</span>
                 <span className="text-6xl font-bold text-[#1D3A8A]">
-                  {language === 'fr' ? '25,000' : '45'}
+                  {currencyData[currency].pricePerHOur}
                 </span>
-                <span className="text-2xl text-gray-600">
-                  {t.pricing.currency}
-                </span>
-                <span className="text-xl text-gray-500">
-                  {t.pricing.perHour}
-                </span>
+                <span className="text-2xl text-gray-600">{currencyData[currency].sign}</span>
+                <span className="text-xl text-gray-500">{t.pricing.perHour}</span>
               </div>
             </div>
 
@@ -197,6 +218,7 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Final CTA */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#1D3A8A] via-[#2A4BA0] to-[#1D3A8A] relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 right-20 w-64 h-64 bg-[#FBBF24] rounded-full blur-3xl animate-float" />
@@ -222,25 +244,22 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Footer */}
       <footer className="bg-[#1D3A8A] text-white py-8 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="w-8 h-8 bg-gradient-to-br from-[#2A4BA0] to-[#1D3A8A] rounded-lg flex items-center justify-center">
-              <Zap className="text-[#FBBF24]" size={18} />
+            <div className="w-10 h-10 bg-gradient-to-br from-[#1D3A8A] to-[#2A4BA0] rounded-lg flex items-center justify-center">
+              <img src={logoImage} alt="Logo" style={{height: "35px"}} />
             </div>
             <span className="text-xl font-bold">Alinafa</span>
           </div>
           <p className="text-blue-200 text-sm">
-            © 2024 Alinafa. {language === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.'}
+            © {new Date().getFullYear()} Alinafa. {language === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.'}
           </p>
         </div>
       </footer>
 
-      <ContactModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        translations={t.modal}
-      />
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} translations={t.modal} />
     </div>
   );
 }

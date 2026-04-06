@@ -3,13 +3,13 @@ import { Translation } from '../types';
 export const translations: Record<'fr' | 'en', Translation> = {
   fr: {
     hero: {
-      title: 'Accédez à l\'expertise d\'un senior en 1h',
-      subtitle: 'Pour les founders africains qui construisent de vrais produits. Obtenez des conseils concrets sur votre MVP, architecture, sécurité et déploiement.',
+      title: 'Nous connectons les VibeCodeurs avec des experts de la tech',
+      subtitle: "Un accompagnement sur la vision, l'UI/UX, l'architecture de code, la sécurité, le déploiement, et le monitoring de votre produit.",
       cta: 'Réserver une session',
       stats: {
-        sessions: '500+ sessions',
-        satisfaction: '98% satisfaits',
-        experts: '50+ experts',
+        sessions: '1+ sessions',
+        satisfaction: '100% satisfaits',
+        experts: '10+ experts',
       },
     },
     forWho: {
@@ -17,7 +17,7 @@ export const translations: Record<'fr' | 'en', Translation> = {
       subtitle: 'Alinafa est fait pour vous si vous êtes...',
       profiles: [
         {
-          title: 'Vibe Coder',
+          title: 'Vibe Codeur',
           description: 'Vous codez avec passion mais vous avez besoin de guidance pour structurer votre projet, éviter les pièges techniques et prendre les bonnes décisions d\'architecture.',
         },
         {
@@ -60,6 +60,7 @@ export const translations: Record<'fr' | 'en', Translation> = {
       subtitle: 'Payez uniquement pour le temps dont vous avez besoin',
       currency: 'FCFA',
       perHour: '/heure',
+      priceStartFrom: 'À partir de',
       features: [
         'Session 1h minimum',
         'Revue de code en direct',
@@ -76,16 +77,16 @@ export const translations: Record<'fr' | 'en', Translation> = {
     },
     modal: {
       title: 'Réserver une session',
-      subtitle: 'Choisissez votre mode de contact préféré',
-      whatsapp: 'Contacter via WhatsApp',
+      subtitle: "Site en construction. En attendant, contactez nous via WhatsApp, ou à l'addresse email service@alinafa.com.",
+      whatsapp: 'WhatsApp',
       email: 'Envoyer un email',
       close: 'Fermer',
     },
   },
   en: {
     hero: {
-      title: 'Access senior expertise in 1 hour',
-      subtitle: 'For African founders building real products. Get concrete advice on your MVP, architecture, security, and deployment.',
+      title: 'We connect VibeCoders with technical experts.',
+      subtitle: "With ad-hoc consulting sessions on the vision, UI/UX design, code architecture, security, deployment, and monitoring of your product.",
       cta: 'Book a session',
       stats: {
         sessions: '500+ sessions',
@@ -141,6 +142,7 @@ export const translations: Record<'fr' | 'en', Translation> = {
       subtitle: 'Pay only for the time you need',
       currency: 'USD',
       perHour: '/hour',
+      priceStartFrom: 'From',
       features: [
         '1-hour minimum session',
         'Live code review',

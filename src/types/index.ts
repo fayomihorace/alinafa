@@ -31,6 +31,7 @@ export interface Translation {
     subtitle: string;
     currency: string;
     perHour: string;
+    priceStartFrom: string;
     features: string[];
     cta: string;
   };
