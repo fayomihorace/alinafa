@@ -63,7 +63,6 @@ export const translations: Record<'fr' | 'en', Translation> = {
       priceStartFrom: 'À partir de',
       features: [
         'Session 1h minimum',
-        'Revue de code en direct',
         'Conseils architecture & sécurité',
         'Recommandations documentées',
         'Support post-session (48h)',
